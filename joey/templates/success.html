@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Consultation Details</h1>
+    {% if consultation %}
+        <p>Agreement signed by:</p>
+        <p><strong>Client</strong>: {{consultation.client_signature.client}}</p>
+        <p><strong>Date</strong>: {{ consultation.consultation_date }}</p>
+        <p>Consultation signed. Thank you</p>
+    {% else %}
+        <p>Sorry an error occured</p>
+    {% endif %}
+</body>
+</html>
