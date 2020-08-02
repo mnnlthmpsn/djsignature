@@ -29,20 +29,20 @@
             {% csrf_token %}
             <div class="form-group">
                 <label for="name">Client Name</label>
-                <input class="form-control" type="text" name="name" id="name" placeholder="Client Name">
+                <input class="form-control" type="text" name="name" id="name" placeholder="Client Name" required>
             </div>
 
             <div class="form-group">
                 <!-- client temperature -->
                 <label for="temp">Client Tempertaure</label>
-                <input class="form-control" type="text" name="temp" id="temp" placeholder="Client Temperature">
+                <input class="form-control" type="number" name="temp" id="temp" placeholder="Client Temperature" required>
             </div>
 
             <div class="form-group">
                 <!-- is client wearing a mask -->
                 <label for="has_mask">Is Client wearing a mask?</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="has_mask" value="True">
+                    <input class="form-check-input" type="radio" name="has_mask" value="True" required>
                     <label for="yes" class="form-check-label">Yes</label>
                 </div>
                 <div class="form-check">
@@ -54,9 +54,9 @@
 
             <!-- Have you been diagnosed with covid? -->
             <div class="form-group">
-                <label for="covid_diagnosed">Have you been diagnosed with Covid-19?</label>
+                <label for="covid_diagnosed">Have you or anyone in your household been diagnosed with Covid-19?</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="covid_diagnosed" value="True">
+                    <input class="form-check-input" type="radio" name="covid_diagnosed" value="True" required> 
                     <label for="yes" class="form-check-label">Yes</label>
                 </div>
                 <div class="form-check">
@@ -68,25 +68,27 @@
                 <!-- what type of test -->
                 <div class="form-group col-md-8">
                     <label for="test_type">What type of test was taken?</label>
-                    <input class="form-control" type="text" name="test_type" id="test_type">
+                    <input class="form-control" type="text" name="test_type" id="test_type" required>
                 </div>
                 <!-- when was test done -->
                 <div class="form-group col-md-4">
                     <label for="test_date">When was the test done?</label>
-                    <input class="form-control" type="date" name="test_date" id="test_date">
+                    <input class="form-control" type="date" name="test_date" id="test_date" required> 
                 </div>
             </div>
             <!-- test results -->
             <div class="form-group col">
                 <label for="test_results">What were the results</label>
-                <textarea class="form-control" name="test_results" id="test_results" rows="10"></textarea>
+                <textarea class="form-control" name="test_results" id="test_results" rows="10" required></textarea>
             </div>
 
             <!-- Have you experienced any flu like symptoms -->
             <div class="form-group">
-                <label for="has_symptoms">Have you experienced any Flu-like symptoms?</label>
+                <label for="has_symptoms">Have you experienced any Cold or Flu-like symptoms in the last 14 days
+                     (fever, cough, sore throat, shortness of breath or other respiratory problem)?
+                </label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="has_symptoms" value="True">
+                    <input class="form-check-input" type="radio" name="has_symptoms" value="True" required>
                     <label for="yes" class="form-check-label">Yes</label>
                 </div>
                 <div class="form-check">
@@ -98,9 +100,13 @@
 
             <!-- Have you been to high risk zone -->
             <div class="form-group">
-                <label for="high_risk_zone"> Have you been in places with a high infection rate within 2 hours?</label>
+                <label for="high_risk_zone"> 
+                    Have you been in places with a high infection 
+                    rate within the last two weeks (e.g., state-designated “hotspots”)? 
+                    If yes, please explain
+                </label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="high_risk_zone" value="True">
+                    <input class="form-check-input" type="radio" name="high_risk_zone" value="True" required>
                     <label for="yes" class="form-check-label">Yes</label>
                 </div>
                 <div class="form-check">
@@ -112,10 +118,11 @@
 
             <!-- Have you had close contact with or cared for someone diagnosed with Covid-19 -->
             <div class="form-group">
-                <label for="contact_with_suspect">Have you had close contact with or cared for someone diagnosed with
-                    Covid-19</label>
+                <label for="contact_with_suspect">
+                    Have you had close contact with or cared for someone diagnosed with COVID-19 within the last 14 days?
+                </label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="contact_with_suspect" value="True">
+                    <input class="form-check-input" type="radio" name="contact_with_suspect" value="True" required>
                     <label for="yes" class="form-check-label">Yes</label>
                 </div>
                 <div class="form-check">
@@ -126,9 +133,11 @@
 
             <!-- Have you been advised as clinically vulnerable -->
             <div class="form-group">
-                <label for="is_clinically_vulnerable">Have you been advised as clinically vulnerable?</label>
+                <label for="is_clinically_vulnerable">
+                    Have you or anyone in your family been advised by the government as being clinically vulnerable and to shield?
+                </label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="is_clinically_vulnerable" value="True">
+                    <input class="form-check-input" type="radio" name="is_clinically_vulnerable" value="True" required>
                     <label for="yes" class="form-check-label">Yes</label>
                 </div>
                 <div class="form-check">
@@ -139,8 +148,9 @@
 
             <!-- Vulnerable disease -->
             <div class="form-group">
-                <label for="is_clinically_vulnerable">Are you or anyone suffering from Vulnerable disease
-                    below?</label><br>
+                <label for="is_clinically_vulnerable">
+                    Are you or anyone in your family currently suffering from:
+                </label><br>
                 <div>
                     <li>People 65 years or older</li>
                     <li>Respiratory conditions including Chronic lung disease, severe asthma and severe chronic
@@ -172,7 +182,7 @@
                 </div>
                 <br>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="has_vulnerable_disease" value="True">
+                    <input class="form-check-input" type="radio" name="has_vulnerable_disease" value="True" required>
                     <label for="yes" class="form-check-label">Yes</label>
                 </div>
                 <div class="form-check">
@@ -183,9 +193,12 @@
 
             <!-- Have you been asked to self quarantine -->
             <div class="form-group">
-                <label for="to_self_quarantine">Have you been asked to self quarantine??</label>
+                <label for="to_self_quarantine">
+                    Have you been asked to self- isolate or quarantine by a doctor or a local public 
+                    health official in the last 14 days?
+                </label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="to_self_quarantine" value="True">
+                    <input class="form-check-input" type="radio" name="to_self_quarantine" value="True" required>
                     <label for="yes" class="form-check-label">Yes</label>
                 </div>
                 <div class="form-check">
@@ -196,13 +209,30 @@
 
             <!-- Have you traveled anywhere outside the UK in the last 2 weeks -->
             <div class="form-group">
-                <label for="has_traveled">Have you traveled anywhere outside the UK in the last 2 weeks?</label>
+                <label for="has_traveled">Have you traveled anywhere outside the UK in the last 14 days?</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="has_traveled" value="True">
+                    <input class="form-check-input" type="radio" name="has_traveled" value="True" required>
                     <label for="yes" class="form-check-label">Yes</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="has_traveled" value="False">
+                    <label for="no" class="form-check-label">No</label>
+                </div>
+            </div>
+
+            <!-- Have you had symptoms -->
+            <div class="form-group">
+                <label for="had_symptoms">
+                    Do you now, or have you recently had, any chills, muscle aches, pain or 
+                    cramping in your legs / calves,  new loss of taste or smell, or new 
+                    rashes or lesions on your body or feet?
+                </label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="had_symptoms" value="True" required>
+                    <label for="yes" class="form-check-label">Yes</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="had_symptoms" value="False">
                     <label for="no" class="form-check-label">No</label>
                 </div>
             </div>
@@ -221,7 +251,7 @@
                     promise to inform your therapist before appointment date?
                 </label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="agreement" value="True">
+                    <input class="form-check-input" type="radio" name="agreement" value="True" required>
                     <label for="yes" class="form-check-label">Yes</label>
                 </div>
                 <div class="form-check">

@@ -56,6 +56,7 @@ class Questionnaire(models.Model):
     )
     self_quarantine = models.BooleanField(default=False, blank=False, null=True)
     has_traveled = models.BooleanField(default=False, blank=False, null=True)
+    had_symptoms = models.BooleanField(default=False, blank=False, null=True)
     client_questions = models.TextField(blank=False, null=True)
     report_agreement = models.BooleanField(default=False, blank=False, null=True)
     

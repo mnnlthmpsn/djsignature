@@ -94,6 +94,7 @@ def submit_questionnaire(request):
         has_vulnerable_disease = request.POST['has_vulnerable_disease']
         self_quarantine = request.POST['to_self_quarantine']
         has_traveled = request.POST['has_traveled']
+        had_symptoms = request.POST['had_symptoms']
         client_questions = request.POST['client_questions']
         report_agreement = request.POST['agreement']
 
@@ -112,6 +113,7 @@ def submit_questionnaire(request):
             has_vulnerable_disease=has_vulnerable_disease,
             self_quarantine=self_quarantine,
             has_traveled=has_traveled,
+            had_symptoms=had_symptoms,
             client_questions=client_questions,
             report_agreement=report_agreement
             )
